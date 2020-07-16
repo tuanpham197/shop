@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import products from "../reducers/product";
+import {connect} from 'react-redux';
+import * as actions from '../actions/index'
+import PropTypes from 'prop-types';
 
 class Product extends Component {
+
+  addToCart = (product)=>{
+    this.props.addToCart(product,1);
+  }
+
   render() {
 	  var {product} = this.props;
     return (
@@ -50,6 +58,7 @@ class Product extends Component {
                   data-placement="top"
                   title=""
                   data-original-title="Add to Cart"
+                  onClick = {()=>this.addToCart(product)}
                 >
                   <i className="fa fa-shopping-cart"></i>
                 </a>
@@ -61,5 +70,6 @@ class Product extends Component {
     );
   }
 }
+
 
 export default Product;

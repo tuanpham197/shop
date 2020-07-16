@@ -9,7 +9,7 @@ var initialState = [
         inventory : 10
     },
     {
-        id : 1,
+        id : 2,
         name : 'Xiaomi',
         image : 'https://znews-photo.zadn.vn/w660/Uploaded/fsmyy/2018_05_31/3_2.jpg',
         description : 'Sản phẩm mới',
@@ -17,7 +17,7 @@ var initialState = [
         inventory : 10
     },
     {
-        id : 1,
+        id : 3,
         name : 'Samsung',
         image : 'https://cdn.tgdd.vn/Products/Images/42/179530/samsung-galaxy-s10-plus-white-600x600.jpg',
         description : 'Sản phẩm mới',
