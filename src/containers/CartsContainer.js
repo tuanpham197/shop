@@ -4,6 +4,8 @@ import Cart from '../components/Cart';
 import CartItem from '../components/CartItem';
 import CartResult from '../components/CartResult';
 
+import * as actions from '../actions/index';
+
 class CartsContainer extends Component {
     render() {
         var {carts} = this.props;
@@ -16,12 +18,15 @@ class CartsContainer extends Component {
     }
 
     showCart = (carts)=>{
+        var {updateItem,deleteItem} = this.props;
         var result = null;
         if(carts.length > 0){
             result = carts.map((e,i)=>{
                 return <CartItem 
                             key={i}
                             cart={e}
+                            updateItem = {updateItem}
+                            deleteItem = {deleteItem}
                         />
             })
         }
@@ -39,4 +44,14 @@ const mapStateToProps = state =>{
         carts : state.carts
     }
 }
-export default connect(mapStateToProps,null)(CartsContainer);
+const mapDispatchToProps = (dispatch,props)=>{
+    return {
+        updateItem : (id,act)=>{
+            dispatch(actions.updateItemCart(id,act));
+        },
+        deleteItem : (id)=>{
+            dispatch(actions.deleteItemCart(id));
+        }
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(CartsContainer);

@@ -3,7 +3,6 @@ import './App.css';
 import Header from './components/Header';
 import Message from './components/Message';
 import Footer from './components/Footer';
-import Cart from './components/Cart';
 import ProductsContainer from './containers/ProductsContainer';
 import CartsContainer from './containers/CartsContainer';
 
