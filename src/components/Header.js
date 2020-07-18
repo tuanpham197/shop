@@ -1,4 +1,10 @@
 import React, { Component } from "react";
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link
+  } from "react-router-dom";
 
 class Header extends Component {
   render() {
@@ -288,7 +294,7 @@ class Header extends Component {
             <div className="breadcrumb-dn mr-auto">
               <ol className="breadcrumb header-breadcrumb">
                 <li className="breadcrumb-item">
-                  <a>Trang Chủ</a>
+					<Link to="/">Trang chủ</Link>
                 </li>
               </ol>
             </div>
@@ -308,9 +314,7 @@ class Header extends Component {
                   className="dropdown-menu dropdown-menu-right"
                   aria-labelledby="dropdownMenu1"
                 >
-                  <a className="dropdown-item waves-effect waves-light">
-                    Đăng Ký
-                  </a>
+					<Link className="dropdown-item waves-effect waves-light" to="/cart">Giỏ Hàng</Link>
                   <a className="dropdown-item waves-effect waves-light">
                     Đăng Nhập
                   </a>

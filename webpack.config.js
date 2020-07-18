@@ -52,7 +52,15 @@ module.exports = {
 					},
 				}
 			]
-        } 
+		},
+		{
+			test: /\.(png|jpe?g|gif)$/i,
+			use: [
+				{
+					loader: "file-loader?name=/public/img/[name].[ext]",
+				},
+			],
+		  }, 
     ]
   },
   devServer: {

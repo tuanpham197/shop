@@ -3,7 +3,7 @@ var initialState = [
     {
         id : 1,
         name : 'Iphone 7',
-        image : 'https://vnn-imgs-f.vgcloud.vn/2019/09/11/05/hinh-anh-va-trai-nghiem-dau-tien-ve-iphone-11-11-pro-va-pro-max.jpg',
+        image : 'public/img/iphone.jpg',
         description : 'Sản phẩm mới',
         price : 200,
         inventory : 10
@@ -11,7 +11,7 @@ var initialState = [
     {
         id : 2,
         name : 'Xiaomi',
-        image : 'https://znews-photo.zadn.vn/w660/Uploaded/fsmyy/2018_05_31/3_2.jpg',
+        image : 'public/img/xiaomi.jpg',
         description : 'Sản phẩm mới',
         price : 200,
         inventory : 10
@@ -19,7 +19,7 @@ var initialState = [
     {
         id : 3,
         name : 'Samsung',
-        image : 'https://cdn.tgdd.vn/Products/Images/42/179530/samsung-galaxy-s10-plus-white-600x600.jpg',
+        image : 'public/img/images.jpg',
         description : 'Sản phẩm mới',
         price : 200,
         inventory : 10
