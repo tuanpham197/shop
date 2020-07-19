@@ -5,7 +5,7 @@ import Product from '../components/Product'
 import * as actions from '../actions/index';
 import ManagerProduct from '../components/manager/ManageProduct';
 import ProductItem from '../components/manager/ProductItem';
-import callApi from '../utils/apiCaller';
+
 
 class ManagerProductContainer extends Component {
     constructor(props) {
@@ -15,24 +15,13 @@ class ManagerProductContainer extends Component {
         }
     }
     onDeleteItem = (id)=>{
-        callApi(`products/${id}`,'DELETE')
-        .then(res=>{
-            if(res.status === 200){
-                this.props.deleteProduct(id);
-            }
-        }).catch(err=>{
-            console.log(err);
-        })
+        this.props.deleteProduct(id);
     }
     componentDidMount(){
-        callApi('products','GET')
-        .then(res=>{
-            this.props.fetchProducts(res.data);
-        })
+        this.props.fetchProducts();
     }
     render() {
         var {products} = this.props;
-
         return (
             <ManagerProduct test={`123`} onDeleteItem2={this.onDeleteItem}>
                 {products}
@@ -50,8 +39,8 @@ const mapStateToProps = state=>{
 }
 const mapDispatchToProps = (dispatch,props)=>{
     return {
-        fetchProducts : (products)=>{
-            dispatch(actions.fetchProducts(products));
+        fetchProducts : ()=>{
+            dispatch(actions.callApiGetProduct());
         },
         deleteProduct : (id)=>{
             dispatch(actions.deleteProduct(id));

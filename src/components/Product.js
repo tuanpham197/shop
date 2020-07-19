@@ -78,7 +78,7 @@ class Product extends Component {
 }
 Product.propTypes = {
 	product: PropTypes.shape({
-		id: PropTypes.number.isRequired,
+		id: PropTypes.string.isRequired,
 		name: PropTypes.string.isRequired,
 	}).isRequired
 }

@@ -5,6 +5,9 @@ import Product from '../components/Product'
 import * as actions from '../actions/index';
 
 class ProductsContainer extends Component {
+    componentDidMount(){
+        this.props.fetchProductsRequest();
+    }
     render() {
         var {products,location} = this.props;
         console.log(location);
@@ -40,7 +43,10 @@ const mapDispatchToProps = (dispatch,props)=>{
     return {
         addToCart : (product,qty)=>{
             dispatch(actions.addToCart(product,qty));
-        }
+        },
+        fetchProductsRequest : ()=>{
+            dispatch(actions.callApiGetProduct());
+        },
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(ProductsContainer);
