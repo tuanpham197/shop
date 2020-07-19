@@ -1,4 +1,6 @@
 
+import * as types from '../constants/ActionType'
+
 var initialState = [
     {
         id : 1,
@@ -28,6 +30,16 @@ var initialState = [
 
 const products = (state = initialState,action)=>{
     switch(action.type){
+        case types.FETCH_PRODUCTS:
+            console.log(action.products);
+            state = action.products
+            return [...state];
+        case types.DELETE_PRODUCT: 
+            var index = state.findIndex(ele=>ele.id === action.id);
+            if(index !== -1){
+                state.splice(index,1);
+            }
+            return [...state];
         default :
             return [...state];
     }

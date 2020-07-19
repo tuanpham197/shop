@@ -20,3 +20,18 @@ export const deleteItemCart = (id)=>{
         id 
     }
 }
+export const fetchProductsRequest = ()=>{
+    
+}
+export const fetchProducts = (products)=>{
+    return {
+        type : types.FETCH_PRODUCTS,
+        products
+    }
+}
+export const deleteProduct = (id)=>{
+    return {
+        type : types.DELETE_PRODUCT,
+        id
+    }
+}

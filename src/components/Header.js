@@ -294,7 +294,10 @@ class Header extends Component {
             <div className="breadcrumb-dn mr-auto">
               <ol className="breadcrumb header-breadcrumb">
                 <li className="breadcrumb-item">
-					<Link to="/">Trang chủ</Link>
+					        <Link to="/">Trang chủ</Link>
+                </li>
+                <li className="breadcrumb-item">
+					        <Link to="/manager-product">Quản lý sản phẩm</Link>
                 </li>
               </ol>
             </div>
@@ -314,10 +317,8 @@ class Header extends Component {
                   className="dropdown-menu dropdown-menu-right"
                   aria-labelledby="dropdownMenu1"
                 >
-					<Link className="dropdown-item waves-effect waves-light" to="/cart">Giỏ Hàng</Link>
-                  <a className="dropdown-item waves-effect waves-light">
-                    Đăng Nhập
-                  </a>
+					          <Link className="dropdown-item waves-effect waves-light" to="/cart">Giỏ Hàng</Link>
+                    <Link className="dropdown-item waves-effect waves-light" to="/login">Đăng Nhập</Link>
                   <a className="dropdown-item waves-effect waves-light">
                     Đăng Xuất
                   </a>

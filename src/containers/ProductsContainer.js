@@ -6,7 +6,8 @@ import * as actions from '../actions/index';
 
 class ProductsContainer extends Component {
     render() {
-        var {products} = this.props
+        var {products,location} = this.props;
+        console.log(location);
         return (
             <Products>
                 {this.showProduct(products)}
@@ -22,6 +23,7 @@ class ProductsContainer extends Component {
                             key={i}
                             product={e}
                             addToCart = {addToCart}
+                            
                         />
             })
         }
