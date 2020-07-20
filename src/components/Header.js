@@ -297,7 +297,7 @@ class Header extends Component {
 					        <Link to="/">Trang chủ</Link>
                 </li>
                 <li className="breadcrumb-item">
-					        <Link to="/manager-product">Quản lý sản phẩm</Link>
+					        <Link to="/manage-product">Quản lý sản phẩm</Link>
                 </li>
               </ol>
             </div>

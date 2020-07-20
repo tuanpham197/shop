@@ -15,7 +15,7 @@ class Cart extends Component {
                                 <Link to="/">
                                    
                                 </Link>
-                                
+                                 
                             </span>
                         </p>
                     </>

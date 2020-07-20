@@ -7,6 +7,13 @@ var initialState = [
 
 const products = (state = initialState,action)=>{
     switch(action.type){
+        case types.ADD_PRODUCT: 
+            var arrId = state.map(ele=>{
+                return ele.id;
+            });
+            var maxId = Math.max(...arrId);
+            state.push({...action.product,id:maxId});
+            return [...state];
         case types.GET_PRODUCTS:
             return [...state];
         case types.FETCH_PRODUCTS:

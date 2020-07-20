@@ -23,7 +23,7 @@ class ManagerProductContainer extends Component {
     render() {
         var {products} = this.props;
         return (
-            <ManagerProduct test={`123`} onDeleteItem2={this.onDeleteItem}>
+            <ManagerProduct onDeleteItem2={this.onDeleteItem}>
                 {products}
             </ManagerProduct>
         );

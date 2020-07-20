@@ -10,7 +10,7 @@ class ProductsContainer extends Component {
     }
     render() {
         var {products,location} = this.props;
-        console.log(location);
+
         return (
             <Products>
                 {this.showProduct(products)}

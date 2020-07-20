@@ -5,6 +5,7 @@ import Login from './components/Login';
 import ManageProductContainer from './containers/ManageProductContainer';
 import AddProduct from './components/manager/AddProduct';
 import { Button } from 'antd';
+import Message from './components/Message';
 
 const routes = [
     {
@@ -23,14 +24,19 @@ const routes = [
         main : ({location})=> <Login location={location} />
     },
     {
-        path : '/manager-product',
+        path : '/manage-product',
         exact : true,
         main : ()=><ManageProductContainer />
     },
     {
-        path : '/manager-product/add',
+        path : '/manage-product/add',
         exact : true,
         main : ({history})=> <AddProduct history={history}></AddProduct>
+    },
+    {
+        path : '/manage-product/update/:id', 
+        exact : true,
+        main : ({match})=> <AddProduct match={match}/>
     },
 ];
 export default routes;

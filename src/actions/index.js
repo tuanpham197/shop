@@ -59,3 +59,16 @@ export const deleteProduct = (id)=>{
         id
     }
 }
+export const addProduct = (product)=>{
+    return {
+        type : types.ADD_PRODUCT,
+        product
+    }
+}
+export const updateProduct = (id,product)=>{
+    return {
+        type : types.UPDATE_ITEM_CARD,
+        id,
+        product
+    }
+}
