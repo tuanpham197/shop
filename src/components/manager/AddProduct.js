@@ -9,6 +9,7 @@ import * as actions from '../../actions/index';
 import {connect} from 'react-redux';
 import { Spin } from 'antd';
 
+
 class AddProduct extends Component {
 	constructor(props) {
 		super(props);
@@ -23,33 +24,52 @@ class AddProduct extends Component {
 			title : ''
 		}
 	}
+	formRef = React.createRef();
 	componentDidMount(){
+		
 		var {match} = this.props;
-		this.setState({
-			name : "123"
-		})
-		if(match){
-			console.log("update");
-			
-			var product = this.findPrduct(match.params.id);
-			this.setState({ 
-				id : product.id, 
-				name : product.name,
-				price : product.price,
-				inventory : product.inventory,
-				image : product.image,
-				
-			})
-		}else{
-			this.setState({ 
-				action : 'add', 
-				title : 'Thêm mới sản phẩm'
-			})
-		}
+			if(match){
+				this.setState({
+					loading : true
+				})
+				setTimeout(()=>{
+					this.setState({
+						loading : false,
+						title : 'Cập nhật sản phẩm'
+					})
+					var product = this.findPrduct(match.params.id);
+					this.setState({ 
+						id : product.id, 
+						name : product.name,
+						price : product.price,
+						inventory : product.inventory,
+						image : product.image,
+						
+					})
+					this.formRef.current.setFieldsValue({
+						username: product.name,
+						price : product.price,
+						inventory : product.inventory,
+						image : product.image,
+						
+					});
+				},1000);
+			}else{
+				this.setState({ 
+					action : 'add', 
+					title : 'Thêm mới sản phẩm'
+				})
+			}
+		
+		
+		
 	}
 	findPrduct = (id)=>{
-		var {products} = this.props;
-		return products.find(ele=>ele.id === id);
+		if(this.props.products){
+			var {products} = this.props;
+			return products.find(ele=>ele.id === id);
+		}
+		
 	}
 	onFinish = values => {
 		if(this.state.action === 'add'){
@@ -81,12 +101,26 @@ class AddProduct extends Component {
 			// 	console.log(err);
 			// })
 		}
+		else{
+			console.log("updating.....");
+			this.props.updateProduct(this.state.id,{
+				name : values.username,
+				price : values.price,
+				inventory : values.inventory,
+				image : values.image
+			});
+			this.setState({ 
+				loading:true
+			})
+			setTimeout(()=>{
+				var {history} = this.props;
+				history.goBack();
+			},1000);
+		}
 	};
-
+	
 	render() {
-		var {name} = this.state;
-		console.log(this.state);
-		var tmp = "test" + name;
+	
 		return (
 		<>
 			<Spin tip="Loading..." spinning={this.state.loading}>
@@ -98,20 +132,17 @@ class AddProduct extends Component {
 					wrapperCol={{
 						span: 14,
 					}}
+					ref={this.formRef}
 					onFinish={this.onFinish}
 					layout="horizontal"
 					initialValues={{
 						size: 'large',
-						username: tmp,
-						price :  this.state.price,
-						// inventory : this.state.inventory,
-						// image : this.state.image
+
 					}}
 				>
 				<Form.Item 
 					label="Tên sản phẩm"
 					name="username"
-					
 					rules={[{ required: true, message: 'Vui lòng điền tên sản phẩm' }]}
 				>
 					<Input  />

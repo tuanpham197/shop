@@ -32,6 +32,11 @@ class ManagerProduct extends Component {
 			key: "name",
 		},
 		{
+			title: "Gía",
+			dataIndex: "price",
+			key: "price",
+		},
+		{
 			title: "Số lượng",
 			dataIndex: "inventory",
 			key: "inventory",
@@ -113,18 +118,7 @@ class ManagerProduct extends Component {
 					</Button>
 				</Link>
 
-				<Modal
-					title="Modal"
-					visible={this.state.visible}
-					onOk={this.onProcess}
-					onCancel={this.hideModal}
-					okText="确认"
-					cancelText="取消"
-				>
-					<p>Bla bla ...</p>
-					<p>Bla bla ...</p>
-					<p>Bla bla ...</p>
-				</Modal>
+				
 				<Table
 					columns={this.columns}
 					dataSource={this.state.products}

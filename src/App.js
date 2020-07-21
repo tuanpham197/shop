@@ -13,6 +13,7 @@ import {
 	Link
 } from "react-router-dom";
 import routes from './routes';
+import Demo from './containers/Demo';
 
 class App extends Component {
 	showContentMenu = (routes)=>{
@@ -32,8 +33,9 @@ class App extends Component {
         return result;
     }
 	render() {
-		console.log(routes);
+
 		return (
+			//<Demo/>
 			<Router>
 			`	<div>
 				{/* <!-- Header --> */}

@@ -5,6 +5,7 @@ import * as types from '../constants/ActionType';
 import { fetchProducts } from '../actions';
 
 function* fetchProduct(){
+    console.log("call api");
     var products = yield callApi('products','GET')
             .then(res=>{
                 if(res.status === 200){
@@ -13,8 +14,11 @@ function* fetchProduct(){
             }).catch(err=>{
                 return err;
             });
-    if(products)
+    if(products){
+        console.log(products);
         yield put({type: types.FETCH_PRODUCTS,json:products.data});
+    }
+        
 }
 function* deleteProduct(payload){
     yield callApi(`products/${payload.id}`,'DELETE')
@@ -25,12 +29,17 @@ function* deleteProduct(payload){
 function* addProduct(payload){
     yield callApi('products','POST',payload.product);
 }
+function* updateProduct(payload){
+    yield callApi(`products/${payload.id}`,'PUT',payload.product);
+}
 function* watchAction(){
     yield takeEvery(types.GET_PRODUCTS,fetchProduct);
 }
 export default function* rootSaga(){
+    yield fork(fetchProduct);
     yield takeLatest(types.ADD_PRODUCT,addProduct);
     yield takeLatest(types.DELETE_PRODUCT,deleteProduct);
+    yield takeLatest(types.UPDATE_PRODUCT,updateProduct);
     
     yield all([
         watchAction()

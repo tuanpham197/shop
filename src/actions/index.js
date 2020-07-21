@@ -67,7 +67,7 @@ export const addProduct = (product)=>{
 }
 export const updateProduct = (id,product)=>{
     return {
-        type : types.UPDATE_ITEM_CARD,
+        type : types.UPDATE_PRODUCT,
         id,
         product
     }

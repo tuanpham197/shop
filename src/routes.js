@@ -36,7 +36,7 @@ const routes = [
     {
         path : '/manage-product/update/:id', 
         exact : true,
-        main : ({match})=> <AddProduct match={match}/>
+        main : ({match,history})=> <AddProduct match={match} history={history}/>
     },
 ];
 export default routes;
