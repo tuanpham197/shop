@@ -13,7 +13,7 @@ class Cart extends Component {
                         <p>Tiếp tục : 
                             <span>
                                 <Link to="/">
-                                   
+                                   <Button type="primary">Mua hàng</Button>
                                 </Link>
                                  
                             </span>

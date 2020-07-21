@@ -43,15 +43,14 @@ class AddProduct extends Component {
 						name : product.name,
 						price : product.price,
 						inventory : product.inventory,
-						image : product.image,
-						
+						image : product.image,	
 					})
 					this.formRef.current.setFieldsValue({
 						username: product.name,
 						price : product.price,
 						inventory : product.inventory,
 						image : product.image,
-						
+
 					});
 				},1000);
 			}else{
@@ -81,7 +80,7 @@ class AddProduct extends Component {
 			});
 			this.setState({ 
 				loading:true
-			})
+			});
 			setTimeout(()=>{
 				var {history} = this.props;
 				history.goBack();

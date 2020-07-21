@@ -6,7 +6,6 @@ import {
 	EditOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import callApi from "../../utils/apiCaller";
 const confirm = Modal.confirm;
 
 class ManagerProduct extends Component {

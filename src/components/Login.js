@@ -25,7 +25,7 @@ class Login extends Component {
 	}
 	
   onFinish = (values) => {
-	console.log("Success:", values);
+	//console.log("Success:", values);
 	if(values.username == "tuan" && values.password == "123"){
 		localStorage.setItem("user",JSON.stringify({
 			username : values.username,

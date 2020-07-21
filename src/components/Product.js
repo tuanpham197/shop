@@ -13,6 +13,7 @@ class Product extends Component {
 			message: 'Thông báo',
 			description:
 				'Thêm sản phẩm vào giỏ thành công',
+			duration: 1,
 		});
 	};
 	render() {

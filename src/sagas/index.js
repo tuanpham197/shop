@@ -5,7 +5,6 @@ import * as types from '../constants/ActionType';
 import { fetchProducts } from '../actions';
 
 function* fetchProduct(){
-    console.log("call api");
     var products = yield callApi('products','GET')
             .then(res=>{
                 if(res.status === 200){
@@ -15,7 +14,6 @@ function* fetchProduct(){
                 return err;
             });
     if(products){
-        console.log(products);
         yield put({type: types.FETCH_PRODUCTS,json:products.data});
     }
         

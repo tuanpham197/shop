@@ -12,13 +12,13 @@ const products = (state = initialState,action)=>{
                 return ele.id;
             });
             var maxId = Math.max(...arrId);
-            state.push({...action.product,id:maxId});
+
+            state.push({...action.product,id:maxId+1});
             return [...state];
         case types.GET_PRODUCTS:
             return [...state];
         case types.FETCH_PRODUCTS:
             state = action.json;
-            console.log(state,"da co du lieu");
             return [...state];
         case types.UPDATE_PRODUCT: 
             console.log(action,"reducers");

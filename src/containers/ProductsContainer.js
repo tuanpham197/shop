@@ -6,10 +6,13 @@ import * as actions from '../actions/index';
 
 class ProductsContainer extends Component {
     componentDidMount(){
-        this.props.fetchProductsRequest();
+        if(this.props.products === []){
+            this.props.fetchProductsRequest();
+        }
+        
     }
     render() {
-        var {products,location} = this.props;
+        var {products} = this.props;
 
         return (
             <Products>

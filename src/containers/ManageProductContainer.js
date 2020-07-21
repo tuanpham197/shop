@@ -1,27 +1,38 @@
 import React, { Component } from 'react';
-import Products from '../components/Products'
-import {connect} from 'react-redux';
-import Product from '../components/Product'
+import { connect } from 'react-redux';
+import { Redirect} from 'react-router-dom';
+
 import * as actions from '../actions/index';
 import ManagerProduct from '../components/manager/ManageProduct';
-import ProductItem from '../components/manager/ProductItem';
+
 
 
 class ManagerProductContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products : []
+            products: []
         }
     }
-    onDeleteItem = (id)=>{
+    onDeleteItem = (id) => {
         this.props.deleteProduct(id);
     }
-    componentDidMount(){
-        this.props.fetchProducts();
+    componentDidMount() {
+        if (this.props.products === []) {
+            this.props.fetchProducts();
+        }
+
     }
     render() {
-        var {products} = this.props;
+        var { products } = this.props;
+        var user = localStorage.getItem("user");
+        if(!user){
+            return <Redirect 
+			to={{
+				pathname: "/login"
+			}}
+		/>
+        }
         return (
             <ManagerProduct onDeleteItem2={this.onDeleteItem}>
                 {products}
@@ -32,19 +43,19 @@ class ManagerProductContainer extends Component {
 
 }
 
-const mapStateToProps = state=>{
+const mapStateToProps = state => {
     return {
-        products : state.products
+        products: state.products
     }
 }
-const mapDispatchToProps = (dispatch,props)=>{
+const mapDispatchToProps = (dispatch, props) => {
     return {
-        fetchProducts : ()=>{
+        fetchProducts: () => {
             dispatch(actions.callApiGetProduct());
         },
-        deleteProduct : (id)=>{
+        deleteProduct: (id) => {
             dispatch(actions.deleteProduct(id));
         }
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(ManagerProductContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ManagerProductContainer);
