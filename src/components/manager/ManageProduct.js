@@ -44,6 +44,7 @@ class ManagerProduct extends Component {
 			title: "Ảnh",
 			dataIndex: "image",
 			key: "image",
+			//render: (text,record) => <img src={record.image}/>
 		},
 		{
 			title: "Action",

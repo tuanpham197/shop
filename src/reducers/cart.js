@@ -10,7 +10,7 @@ const carts = (state = initialState,action)=>{
             var index = state.findIndex(element=> element.product.id === action.product.id);
 
             if(index !== -1){
-                state[index].qty += 1;
+                state[index].qty += action.qty;
             }
             else{
                 var cartItem = {

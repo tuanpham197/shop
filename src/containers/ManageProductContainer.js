@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect} from 'react-router-dom';
+import { Table, Space, Button, Modal } from "antd";
 
 import * as actions from '../actions/index';
 import ManagerProduct from '../components/manager/ManageProduct';
 
+const confirm = Modal.confirm;
 
 
 class ManagerProductContainer extends Component {
@@ -15,7 +17,26 @@ class ManagerProductContainer extends Component {
         }
     }
     onDeleteItem = (id) => {
-        this.props.deleteProduct(id);
+        
+        var {carts} = this.props;
+        if(carts){
+            var item = carts.find(ele=> ele.product.id === id);
+            
+            if(item !== undefined){
+                confirm({
+                    title: "Cảnh báo",
+                    content: "Sản phẩm đang được mua",
+                    onOk:  () => {
+                        this.props.deleteProduct(id);
+                    },
+                    onCancel() {
+                        console.log("ko xoa nua");
+                    },
+                });
+            }else{
+                this.props.deleteProduct(id);
+            }
+        }
     }
     componentDidMount() {
         if (this.props.products === []) {
@@ -26,6 +47,7 @@ class ManagerProductContainer extends Component {
     render() {
         var { products } = this.props;
         var user = localStorage.getItem("user");
+
         if(!user){
             return <Redirect 
 			to={{
@@ -45,7 +67,8 @@ class ManagerProductContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        products: state.products
+        products: state.products,
+        carts : state.carts
     }
 }
 const mapDispatchToProps = (dispatch, props) => {

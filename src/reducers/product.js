@@ -13,7 +13,7 @@ const products = (state = initialState,action)=>{
             });
             var maxId = Math.max(...arrId);
 
-            state.push({...action.product,id:maxId+1});
+            state.push({...action.product,id:maxId+1+""});
             return [...state];
         case types.GET_PRODUCTS:
             return [...state];

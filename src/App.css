@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+.ant-table {
+  color: rgb(0 0 0) !important;
+  
+}
+table td {
+  font-size: 17px !important;
+  font-weight:600 !important;
+}

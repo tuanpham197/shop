@@ -28,6 +28,7 @@ class AddProduct extends Component {
 	componentDidMount(){
 		
 		var {match} = this.props;
+		console.log(match,"id day");
 			if(match){
 				this.setState({
 					loading : true
@@ -38,6 +39,7 @@ class AddProduct extends Component {
 						title : 'Cập nhật sản phẩm'
 					})
 					var product = this.findPrduct(match.params.id);
+					console.log(product,"du lieu cap nhat");
 					this.setState({ 
 						id : product.id, 
 						name : product.name,
@@ -65,7 +67,9 @@ class AddProduct extends Component {
 	}
 	findPrduct = (id)=>{
 		if(this.props.products){
+
 			var {products} = this.props;
+			console.log(products,'tim thay');
 			return products.find(ele=>ele.id === id);
 		}
 		

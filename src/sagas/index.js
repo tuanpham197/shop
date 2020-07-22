@@ -33,12 +33,17 @@ function* updateProduct(payload){
 function* watchAction(){
     yield takeEvery(types.GET_PRODUCTS,fetchProduct);
 }
+// function* addToCart(){
+//     console.log("adding item to cart");
+// }
 export default function* rootSaga(){
     yield fork(fetchProduct);
 
     yield takeLatest(types.ADD_PRODUCT,addProduct);
     yield takeLatest(types.DELETE_PRODUCT,deleteProduct);
     yield takeLatest(types.UPDATE_PRODUCT,updateProduct);
+
+    // yield takeLatest(types.ADD_TO_CART,addToCart);
     
     yield all([
         watchAction()
