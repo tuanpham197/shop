@@ -136,7 +136,6 @@ class AddProduct extends Component {
 					layout="horizontal"
 					initialValues={{
 						size: 'large',
-
 					}}
 				>
 				<Form.Item 

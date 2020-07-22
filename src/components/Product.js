@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, notification, Space } from 'antd';
 import PropTypes from 'prop-types'
+import { Link } from "react-router-dom";
 
 class Product extends Component {
 
@@ -35,7 +36,9 @@ class Product extends Component {
 					<div className="card-body">
 						<h4 className="card-title">
 							<strong>
-								<a>{product.name}</a>
+								<Link to={`product/${product.id}`}>
+									{product.name}
+								</Link>
 							</strong>
 						</h4>
 						<ul className="rating">

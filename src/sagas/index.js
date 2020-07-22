@@ -35,6 +35,7 @@ function* watchAction(){
 }
 export default function* rootSaga(){
     yield fork(fetchProduct);
+
     yield takeLatest(types.ADD_PRODUCT,addProduct);
     yield takeLatest(types.DELETE_PRODUCT,deleteProduct);
     yield takeLatest(types.UPDATE_PRODUCT,updateProduct);
