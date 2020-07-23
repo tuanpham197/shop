@@ -23,9 +23,8 @@ class Login extends Component {
 			idAuth : false
 		}
 	}
-	
   onFinish = (values) => {
-	//console.log("Success:", values);
+	let {history} = this.props;
 	if(values.username == "tuan" && values.password == "123"){
 		localStorage.setItem("user",JSON.stringify({
 			username : values.username,
@@ -34,6 +33,7 @@ class Login extends Component {
 		this.setState({
 			idAuth : true
 		});
+		history.goBack();
 	}
   };
 
@@ -61,6 +61,8 @@ class Login extends Component {
 					name="basic"
 					initialValues={{
 						remember: true,
+						username:"tuan",
+						password:123
 					}}
 					onFinish={this.onFinish}
 					onFinishFailed={this.onFinishFailed}

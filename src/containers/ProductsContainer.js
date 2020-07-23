@@ -3,21 +3,24 @@ import Products from '../components/Products'
 import {connect} from 'react-redux';
 import Product from '../components/Product'
 import * as actions from '../actions/index';
+import { Spin } from 'antd';
 
 class ProductsContainer extends Component {
     componentDidMount(){
         if(this.props.products === []){
             this.props.fetchProductsRequest();
-        }
-        
+        }   
     }
     render() {
         var {products} = this.props;
-
+        console.log(this.props);
         return (
-            <Products>
-                {this.showProduct(products)}
-            </Products>
+            <Spin tip="Loading..." spinning={this.props.loading.loading}>
+                <Products>
+                    {this.showProduct(products)}
+                </Products>
+            </Spin>
+            
         );
     }
    showProduct(products){
@@ -39,7 +42,8 @@ class ProductsContainer extends Component {
 
 const mapStateToProps = state=>{
     return {
-        products : state.products
+        products : state.products,
+        loading : state.loading
     }
 }
 const mapDispatchToProps = (dispatch,props)=>{

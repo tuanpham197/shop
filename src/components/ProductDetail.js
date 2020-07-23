@@ -62,14 +62,14 @@ class ProductDetail extends Component {
                             <p>Name : {this.state.name} </p>
                             <p>Gía : {this.state.price}$</p>
                             <p>Ảnh sản Phẩm</p>
-                            <img style={{ width:"100%"}} src={this.state.image} />
+                            <img style={{ width:200}} src={this.state.image} />
                         </div>
                     </Col>
-                    <Col md={2} lg={2}>
+                    <Col md={3} lg={3}>
                         <InputNumber min={1} max={10} defaultValue={1} onChange={this.onChange} />
                         <Button type="primary" onClick={()=> this.onClick(this.state)}>Mua sản phẩm</Button>
                     </Col>
-                    <Col md={4} lg={4} ></Col>
+                    <Col md={3} lg={3} ></Col>
                 </Row>
                 
             </Card>   

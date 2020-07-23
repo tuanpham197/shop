@@ -21,13 +21,11 @@ const products = (state = initialState,action)=>{
             state = action.json;
             return [...state];
         case types.UPDATE_PRODUCT: 
-            console.log(action,"reducers");
             var product = state.find(ele=> ele.id === action.id);
             product.name = action.product.name;
             product.price = action.product.price;
             product.inventory = action.product.inventory;
             product.image = action.product.image;
-            console.log(product,"reducers");
             return [...state];
         case types.DELETE_PRODUCT: 
             var index = state.findIndex(ele=>ele.id === action.id);

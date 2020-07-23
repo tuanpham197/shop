@@ -44,7 +44,7 @@ class ManagerProduct extends Component {
 			title: "Ảnh",
 			dataIndex: "image",
 			key: "image",
-			//render: (text,record) => <img src={record.image}/>
+			render: (text,record) => <img style={{ width: 80}} src={record.image}/>
 		},
 		{
 			title: "Action",
@@ -81,25 +81,12 @@ class ManagerProduct extends Component {
 			content: "",
 			onOk: async () => {
 				this.props.onDeleteItem2(id);
-				// var result = await callApi(`products/${id}`, "DELETE");
-				// if (result.status === 200) {
-				//   var index = products.findIndex((ele) => ele.id === id);
-				//   if (index !== -1) {
-				//     products.splice(index,1)
-				//     this.setState({
-				//       flag : index
-				//     });
-				//   }
-				// }
 			},
 			onCancel() {
 				console.log("ko xoa nua");
 			},
 		});
 
-	};
-	onUpdateItem = (id) => {
-		console.log(id);
 	};
 	handleCancel = () => {
 		this.setState({ visible: false });

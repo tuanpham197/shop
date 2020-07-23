@@ -22,7 +22,7 @@ const routes = [
     {
         path : '/login',
         exact : true,
-        main : ({location})=> <Login location={location} />
+        main : ({location,history})=> <Login location={location} history={history} />
     },
     {
         path : '/manage-product',
@@ -43,6 +43,11 @@ const routes = [
         path : '/product/:id',
         exact : false,
         main : ({match})=><ProductDetail match={match} />
+    },
+    {
+        path : '/logout',
+        exact : false,
+        main : ()=><ProductDetail match={match} />
     },
 ];
 export default routes;
